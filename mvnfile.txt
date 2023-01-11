@@ -1,0 +1,21 @@
+pipeline {
+    agent any
+    stages {
+        stage ('code-pull'){
+            steps {
+                git credentialsId: 'eee42841-22b5-45c7-84d8-34d965f5d49c', url: 'https://github.com/ankitakkewar8888/onlinebookstore.git'
+            }
+        }
+        stage ('listing-rep'){
+            steps {
+                sh 'ls'
+            }
+        }
+        stage ('build-code'){
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+    }
+
+}
